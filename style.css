@@ -15,7 +15,7 @@ body {
 .img-login {
   width: 130px;
   height: 130px;
-  background-image: url(logouwu.png);
+  background-image: url(../img/logouwu.png);
   background-size: cover;
   background-position: center;
   position: absolute;
