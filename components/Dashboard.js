@@ -32,12 +32,10 @@ Vue.component("dashboard-admin", {
             </a>
             <span class="tooltip ">Log Database</span>
         </li>
-        <li>
-            <a class="menufoc active" name="cerrarSesion">
-                <span class="links__name "><a class="btn second" href="">SALIR</a></span>
-            </a>
-            <span class="tooltip">Cerrar sesión</span>
-        </li>
+        <form action="/index.html">
+        <button type="submit" @click="logout">SALIR</button>
+        </form>
+        
     </ul>
     </div>
   <div class="header__cont jeje"></div>
@@ -244,6 +242,10 @@ Vue.component("dashboard-admin", {
     asignarComision() {
       this.comisionFinal = this.comisionIngresada;
       localStorage.setItem("comision", this.comisionFinal);
+    },
+    logout() {
+      localStorage.removeItem("rol");
+      localStorage.removeItem("nombre");
     },
   },
 });
