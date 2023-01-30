@@ -139,25 +139,8 @@ Vue.component("dashboard-admin", {
           </div>
       </div>
   
-  
-      <div class="container" id="idlogSes">
-          <table class="tableSesion">
-  
-              <table class="table_">
-                  <thead>
-                      <tr>
-                          <th>Comisión asignada al vendedor</th> 
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr style="color: #FFF;">
-                          <td align="left">$ {{comisionFinal}}</td>
-                      </tr>
-                  </tbody>
-  
-              </table>
-            </table>
-      </div>
+      <div class="test">
+      <h2 class="table-title" id="title-sesion">Liquidacion</h2>
       <div class="container" id="idlogSes">
           <table class="tableSesion">
   
@@ -184,6 +167,7 @@ Vue.component("dashboard-admin", {
               </table>
             </table>
       </div>
+      
     </div>
 
       </div>   
