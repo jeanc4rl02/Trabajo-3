@@ -36,6 +36,7 @@ Vue.component("log-in", {
               placeholder="Contraseña"
               v-model="contraseniaIngresada"
             />
+            <p v-if="error">Usuario y/o contraseña incorrectos.</p>
             <button type="submit" @click.prevent="verificarUsuario">Iniciar Sesion</button>
           </form>
         </div>
@@ -76,7 +77,6 @@ Vue.component("log-in", {
       usuarioIngresado: "",
       contraseniaIngresada: "",
       error: false,
-      usuarioEncontrado: null,
     };
   },
 
@@ -94,24 +94,11 @@ Vue.component("log-in", {
           (user) => user.usuario == this.usuarioIngresado
         );
         console.log(persona[0].rol);
+        localStorage.setItem("nombre", this.usuarioIngresado);
+        localStorage.setItem("rol", persona[0].rol);
+        console.log(localStorage.getItem("rol"));
         this.error = false;
-        switch (persona[0].rol) {
-          case "Admin":
-            window.location = "https://google.com";
-            break;
-          case "Secretario":
-            window.location = "https://youtube.com";
-            break;
-          case "Vendedor":
-            window.location = "https://facebook.com";
-            break;
-          case "Ensamblador":
-            window.location = "https://twitch.com";
-            break;
-
-          default:
-            break;
-        }
+        window.location = "/dashboard.html";
       } else {
         this.error = true;
       }
