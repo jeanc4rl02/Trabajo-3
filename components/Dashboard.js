@@ -170,8 +170,80 @@ Vue.component("dashboard-admin", {
     </div>
 
       </div>   
-      <div v-else-if="rol=='Secretario'">Secretario {{usuario}}</div>
-      <div v-else-if="rol=='Vendedor'">Vendedor {{usuario}}</div>
+      <div v-else-if="rol=='Secretario'">
+      <div class="test">
+      <h2 class="table-title" id="title-sesion">Salario:</h2>
+      <div class="login-page">
+          <div class="cont-login">
+              <div class="img-login"></div>
+                  <form action="" method="post" id="filter" class="form">
+                      <input type="text" id="comision" name="comision" placeholder="Ingrese las horas extra" v-model="horasExtra"/>
+                      <button type="submit" @click.prevent="calcularSalarioSecretario">GUARDAR</button>
+                  </form>
+          </div>
+      </div>
+  
+  
+      <div class="container-table" id="idlogSes">
+          <table class="tableSesion">
+  
+              <table class="table_">
+                  <thead>
+                      <tr>
+                          <th>Salario Total</th> 
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="color: #FFF;">
+                          <td align="left">$ {{salarioTotalSecretario}}</td>
+                      </tr>
+                  </tbody>
+  
+              </table>
+            </table>
+      </div>
+    </div>
+      </div>
+
+      <div v-else-if="rol=='Vendedor'">
+      <div class="test">
+      <h2 class="table-title" id="title-sesion">Salario:</h2>
+      <div class="login-page">
+          <div class="cont-login">
+              <div class="img-login"></div>
+                  <form action="" method="post" id="filter" class="form">
+                  <select name="cantidadEnsamble" v-model="zapatoIngresado">
+                          <option value="zapatos">Zapatos</option>
+                          <option value="zapatillas">Zapatillas</option>
+                        </select>
+                      <input type="text" id="comision" name="comision" placeholder="Cantidad vendida" v-model="numeroVentas"/>
+                      <button type="submit" @click.prevent="calcularSalarioVendedor">GUARDAR</button>
+                  </form>
+          </div>
+      </div>
+  
+  
+      <div class="container-table" id="idlogSes">
+          <table class="tableSesion">
+  
+              <table class="table_">
+                  <thead>
+                      <tr>
+                          <th>Salario Total</th> 
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="color: #FFF;">
+                          <td align="left">$ {{salarioTotalVendedor}}</td>
+                      </tr>
+                  </tbody>
+  
+              </table>
+            </table>
+      </div>
+    </div>
+      
+      </div>
       <div v-else="rol=='Ensamblador'" @click="quieroDarClick">Ensamblador {{usuario}}</div>
   </div>
   `,
@@ -200,6 +272,20 @@ Vue.component("dashboard-admin", {
 
       comisionIngresada: null,
       comisionFinal: localStorage.getItem("comision"),
+
+      // Secretario
+      horasExtra: null,
+      salarioTotalSecretario: localStorage.getItem("salarioTotalSecretario"),
+
+      // Vendedor
+      numeroVentas: null,
+      precioZapatos: 200000,
+      precioZapatillas: 400000,
+      salarioTotalVendedor: localStorage.getItem("salarioTotalVendedor"),
+      totalZapatosVendidos: null,
+      totalZapatillasVendidas: null,
+      totalVentasRealizadas: null,
+      subsidioTransporte: 140000,
     };
   },
   methods: {
@@ -247,6 +333,31 @@ Vue.component("dashboard-admin", {
       this.comisionFinal = this.comisionIngresada;
       localStorage.setItem("comision", this.comisionFinal);
     },
+    calcularSalarioSecretario() {
+      this.salarioTotalSecretario=Number(this.salarioSecretario)+((Number(this.salarioSecretario) / 240) * 1.8 * Number(this.horasExtra));
+      localStorage.setItem("salarioTotalSecretario", this.salarioTotalSecretario)
+    },
+
+    calcularSalarioVendedor() {
+      switch (this.zapatoIngresado) {
+        case "zapatos":
+          this.totalZapatosVendidos = Number(this.numeroVentas) * Number(this.precioZapatos)
+          break;
+        case "zapatillas":
+          this.totalZapatillasVendidas = Number(this.numeroVentas) * Number(this.precioZapatillas)
+          break;
+      }
+      this.totalVentasRealizadas = Number(this.totalZapatosVendidos) + Number(this.totalZapatillasVendidas)
+      if(this.totalVentasRealizadas > 5000000 && this.totalVentasRealizadas < 10000000){
+        this.salarioTotalVendedor = Number(this.salarioVendedor) + ((Number(this.salarioVendedor) * 0.1) + this.subsidioTransporte);
+      }else if(this.totalVentasRealizadas > 10000000){
+        this.salarioTotalVendedor = Number(this.salarioVendedor) + ((Number(this.salarioVendedor) * 0.2) + this.subsidioTransporte);
+      } else {
+        this.salarioTotalVendedor = Number(this.salarioVendedor) + this.subsidioTransporte
+      }
+      localStorage.setItem("salarioTotalVendedor", this.salarioTotalVendedor)
+    },
+
     logout() {
       localStorage.removeItem("rol");
       localStorage.removeItem("nombre");
