@@ -434,7 +434,7 @@ Vue.component("dashboard-admin", {
           break;
       }
       this.totalVentasRealizadas = Number(this.totalZapatosVendidos) + Number(this.totalZapatillasVendidas)
-      if(this.totalVentasRealizadas > 5000000 && this.totalVentasRealizadas < 10000000){
+      if(this.totalVentasRealizadas > 5000000 && this.totalVentasRealizadas <= 10000000){
         this.salarioTotalVendedor = Number(this.salarioVendedor) + ((Number(this.salarioVendedor) * 0.1) + this.subsidioTransporte);
       }else if(this.totalVentasRealizadas > 10000000){
         this.salarioTotalVendedor = Number(this.salarioVendedor) + ((Number(this.salarioVendedor) * 0.2) + this.subsidioTransporte);
@@ -447,7 +447,7 @@ Vue.component("dashboard-admin", {
       let zapatos = 0;
       let zapatillas = 0;
       let hijo = 0;
-          if(this.zapatosEnsamblados > 1000 && this.zapatosEnsamblados < 2000){
+          if(this.zapatosEnsamblados > 1000 && this.zapatosEnsamblados <= 2000){
             zapatos = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.1)
           }else if(this.zapatosEnsamblados > 2000){
             zapatos = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.2)
@@ -455,7 +455,7 @@ Vue.component("dashboard-admin", {
             zapatos;
           }
 
-          if(this.zapatillasEnsambladas > 1700 && this.zapatosEnsamblados < 3000){
+          if(this.zapatillasEnsambladas > 1700 && this.zapatosEnsamblados <= 3000){
             zapatillas = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.15)
           }else if(this.zapatosEnsamblados > 3000){
             zapatillas = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.3)
