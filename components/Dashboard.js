@@ -26,13 +26,6 @@ Vue.component("dashboard-admin", {
             <span class="tooltip ">Salarios Base</span>
         </li>
         <li>
-            <a href="#" class="menufoc active" onclick="mostrarData();">
-                <i class='bx bx-data'></i>
-                <span class=" links__name ">Log Database</span>
-            </a>
-            <span class="tooltip ">Log Database</span>
-        </li>
-        <li>
                 <a href="index.html" class="menufoc active" @click="logout"">
                     <i class='bx bx-exit'></i>
                     <span class=" links__name ">Salir</span>
@@ -46,6 +39,36 @@ Vue.component("dashboard-admin", {
 
 
       <div v-if="rol=='Admin'">
+      <div class="test">
+      <h2 class="table-title" id="title-sesion">Liquidacion</h2>
+      <div class="container" id="idlogSes">
+          <table class="tableSesion" class="container-global-table">
+
+              <table class="table_">
+                  <thead>
+                      <tr>
+                      <th>Total Administrador</th> 
+                      <th>Total Secretario</th>
+                      <th>Total Vendedor</th>
+                      <th>Total Ensamblador</th>
+                      <th>Total Global</th> <button type="submit" @click.prevent="calcularTotalGlobal">Calcular Total</button>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="color: #FFF;">
+                      <td align="left">$ {{salarioAdmin}}</td>
+                      <td align="left">$ {{salarioTotalSecretario}}</td>
+                      <td align="left">$ {{salarioTotalVendedor}}</td>
+                      <td align="left">$ {{salarioTotalEnsamblador}}</td>
+                      <td align="left">$ {{totalGlobal}}</td>
+                      </tr>
+                  </tbody>
+
+              </table>
+            </table>
+      </div>
+
+    </div>
             
         <div class="test">
 
@@ -66,7 +89,7 @@ Vue.component("dashboard-admin", {
                       </form>
                 </div>
               </div>
-              <div class="container-table" id="idlogSes">
+              <div class="container" id="idlogSes">
           <table class="tableSesion">
               <table class="table_">
                   <thead>
@@ -83,24 +106,6 @@ Vue.component("dashboard-admin", {
                           <td align="left">$ {{salarioSecretario}}</td>
                           <td align="left">$ {{salarioVendedor}}</td>
                           <td align="left">$ {{salarioEnsamblador}}</td>
-                      </tr>
-                  </tbody>
-                  <thead>
-                      <tr>
-                          <th>Total Administrador</th> 
-                          <th>Total Secretario</th>
-                          <th>Total Vendedor</th>
-                          <th>Total Ensamblador</th>
-                          <th>Total Global</th> <button type="submit" @click.prevent="calcularTotalGlobal">Calcular Total</button>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr style="color: #FFF;">
-                          <td align="left">$ {{salarioAdmin}}</td>
-                          <td align="left">$ {{salarioTotalSecretario}}</td>
-                          <td align="left">$ {{salarioTotalVendedor}}</td>
-                          <td align="left">$ {{salarioTotalEnsamblador}}</td>
-                          <td align="left">$ {{totalGlobal}}</td>
                       </tr>
                   </tbody>
               </table>
@@ -124,7 +129,7 @@ Vue.component("dashboard-admin", {
                     </form>
             </div>
           </div>
-        <div class="container-table" id="idlogSes">
+        <div class="container" id="idlogSes">
             <table class="tableSesion">
                 <table class="table_">
                     <thead>
@@ -153,6 +158,7 @@ Vue.component("dashboard-admin", {
               </table>
         </div>
       </div>
+
       <div class="test">
       <h2 class="table-title" id="title-sesion">Comisión</h2>
       <div class="login-page">
@@ -166,7 +172,7 @@ Vue.component("dashboard-admin", {
       </div>
   
   
-      <div class="container-table" id="idlogSes">
+      <div class="container" id="idlogSes">
           <table class="tableSesion">
   
               <table class="table_">
@@ -202,7 +208,7 @@ Vue.component("dashboard-admin", {
       </div>
   
   
-      <div class="container-table" id="idlogSes">
+      <div class="container" id="idlogSes">
           <table class="tableSesion">
   
               <table class="table_">
@@ -243,7 +249,7 @@ Vue.component("dashboard-admin", {
       </div>
   
   
-      <div class="container-table" id="idlogSes">
+      <div class="container" id="idlogSes">
           <table class="tableSesion">
   
               <table class="table_">
@@ -280,7 +286,7 @@ Vue.component("dashboard-admin", {
       </div>
   
   
-      <div class="container-table" id="idlogSes">
+      <div class="container" id="idlogSes" class="container-ensam-table">
           <table class="tableSesion">
   
               <table class="table_">
@@ -463,7 +469,7 @@ Vue.component("dashboard-admin", {
             hijo = this.bonoHijos * this.numeroHijos;
           }
 
-      this.salarioTotalEnsamblador = Number(this.salarioEnsamblador) + (Number(this.salarioEnsamblador) / 240) * 2.2 * Number(this.horasExtraEnsamblador) + zapatos + zapatillas + hijo
+      this.salarioTotalEnsamblador = Math.trunc(Number(this.salarioEnsamblador) + (Number(this.salarioEnsamblador) / 240) * 2.2 * Number(this.horasExtraEnsamblador) + zapatos + zapatillas + hijo + Number(this.subsidioTransporte))
 
       localStorage.setItem("salarioTotalEnsamblador", this.salarioTotalEnsamblador)
     },
