@@ -264,7 +264,7 @@ Vue.component("dashboard-admin", {
     </div>
       
       </div>
-      <div v-else="rol=='Ensamblador'" @click="">
+      <div v-else="rol=='Ensamblador'">
       <div class="test">
       <h2 class="table-title" id="title-sesion">Salario:</h2>
       <div class="login-page">
@@ -376,15 +376,15 @@ Vue.component("dashboard-admin", {
           break;
         case "secretario":
           this.salarioSecretario = this.salarioIngresado;
-          localStorage.setItem("salarioSecretario", this.salarioAdmin);
+          localStorage.setItem("salarioSecretario", this.salarioSecretario);
           break;
         case "vendedor":
           this.salarioVendedor = this.salarioIngresado;
-          localStorage.setItem("salarioVendedor", this.salarioAdmin);
+          localStorage.setItem("salarioVendedor", this.salarioVendedor);
           break;
         case "ensamblador":
           this.salarioEnsamblador = this.salarioIngresado;
-          localStorage.setItem("salarioEnsamblador", this.salarioAdmin);
+          localStorage.setItem("salarioEnsamblador", this.salarioEnsamblador);
           break;
         default:
           break;
