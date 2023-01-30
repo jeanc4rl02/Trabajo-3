@@ -362,7 +362,7 @@ html {
 }
 
 .jeje {
-    background:#0f0053;
+    background: #0f0053;
     text-align: center;
     justify-content: center;
     font-size: .750rem;
@@ -384,87 +384,56 @@ html {
 /*TABLA*/
 
 
-.container-table {
+.container {
   width: 100%;
-  /*Limitante ancho*/
-  max-width: 1000px;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin: auto;
-  border-radius: 10px solid #Fff;
-  /*Para que no se ponga pegado del sidebar*/
-  padding-left: 350px;
-  /*Separa la tabla del header*/
-  /* margin-top: 40px; */
-  /*Separa la tabla del header*/
-  margin-bottom: 40px;
-  /* display: none; */
+  align-items: center;
+}
+
+.table_ {
+  background-color: #FAFAFA10;
+  backdrop-filter: blur(0.7rem);
+  text-align: left;
+  border-collapse: collapse;
+  min-width: 600px;
+  border: 2px solid #fafafa10;
+  border-radius: 10px;
+  color: #000;
+  padding: 20px;
+
+}
+
+#first {
+  border-radius: 10px 0 0 0;
+}
+
+#last {
+  border-radius: 0 10px 0 0;
+
+}
+
+.table_  th,tr {
+  padding: 50px;
 }
 
 
-
-
-.container-table-database {
-    width: 100%;
-    /*Limitante ancho*/
-    max-width: 1320px;
-    margin: auto;
-    /*Para que no se ponga pegado del sidebar*/
-    padding-left: 350px;
-    /*Separa la tabla del header*/
-    margin-top: 40px;
-    /*Separa la tabla del header*/
-    margin-bottom: 40px;
-    /*Primera vez que cargue*/
-    display: none;
-}
-
-.tableSesion {
-    
-    width: 100%;
-    border: 0px solid #ccc;
-    /*Para que los campos se junten o no*/
-    border-collapse: collapse;
-    /*Ayuda para que los datos se carguen más rápido y además para que las columns tengan el mismo tamaño*/
-    table-layout: fixed;
+.table_ thead {
+  background-color: #161a42;
+  background-image: linear-gradient(160deg, #161a42 0%, #5462ca 100%);
+  border-bottom: solid 5px rgba(255, 255, 255, .5);
 }
 
 
-/*Título de la tabla*/
-
-.tableSesion caption {
-    font-size: 1.2rem;
-    font-weight: 500px;
-    text-transform: uppercase;
-    margin: 8px 0;
+.table_ tr:nth-child(even) {
+  background: rgba(0, 0, 0, .1);
 }
 
-.tableSesion tr {
-    /*Color de fondo de las filas*/
-    background-color: #f8f8f8;
-    /*Bordes de la tabla. Filas*/
-    border: 1px solid #ddd;
-    color: var(--text-color);
-}
+.table_ tr:hover td {
 
-.tableSesion th,
-.tableSesion td {
-    /*Padding entre cada unos de los campos en Y*/
-    padding: 8px;
-    /*Texto centrado en toda la tabla*/
-    text-align: center;
-    color: var(--text-color);
+  background: rgba(255, 255, 255, .3);
 }
-
-.tableSesion thead th {
-    /*Encabezados en mayúscula*/
-    text-transform: uppercase;
-    /*Color de fondo de encabezados*/
-    background-color: #ddd;
-}
-
 
 /*RESPONSIVE TABLAS*/
 

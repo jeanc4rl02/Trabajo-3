@@ -66,25 +66,23 @@ Vue.component("dashboard-admin", {
                       </form>
                 </div>
               </div>
-              <div class="container-table" id="idlogSes">
-          <table class="tableSesion">
+              <section class="container" id="idlogSes">
               <table class="table_">
-                  <thead>
-                      <tr>
-                          <th>Administrador</th> 
-                          <th>Secretario</th>
-                          <th>Vendedor</th>
-                          <th>Ensamblador</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr style="color: #FFF;">
-                          <td align="left">$ {{salarioAdmin}}</td>
-                          <td align="left">$ {{salarioSecretario}}</td>
-                          <td align="left">$ {{salarioVendedor}}</td>
-                          <td align="left">$ {{salarioEnsamblador}}</td>
-                      </tr>
-                  </tbody>
+                <thead>
+                  <tr>
+                    <th id="first">Administrador</th>
+                    <th>Secretario</th>
+                    <th>Vendedor</th>
+                    <th id="last">Ensamblador</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>$ {{salarioAdmin}}</td>
+                <td>$ {{salarioSecretario}}</td>
+                <td>$ {{salarioVendedor}}</td>
+                <td>$ {{salarioEnsamblador}}</td>
+                </tr>
 
               </table>
             </table>
@@ -107,7 +105,7 @@ Vue.component("dashboard-admin", {
                     </form>
             </div>
           </div>
-        <div class="container-table" id="idlogSes">
+        <div class="container" id="idlogSes">
             <table class="tableSesion">
                 <table class="table_">
                     <thead>
@@ -149,7 +147,7 @@ Vue.component("dashboard-admin", {
       </div>
   
   
-      <div class="container-table" id="idlogSes">
+      <div class="container" id="idlogSes">
           <table class="tableSesion">
   
               <table class="table_">
