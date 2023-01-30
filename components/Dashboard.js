@@ -26,13 +26,6 @@ Vue.component("dashboard-admin", {
             <span class="tooltip ">Salarios Base</span>
         </li>
         <li>
-            <a href="#" class="menufoc active" onclick="mostrarData();">
-                <i class='bx bx-data'></i>
-                <span class=" links__name ">Log Database</span>
-            </a>
-            <span class="tooltip ">Log Database</span>
-        </li>
-        <li>
                 <a href="index.html" class="menufoc active" @click="logout"">
                     <i class='bx bx-exit'></i>
                     <span class=" links__name ">Salir</span>

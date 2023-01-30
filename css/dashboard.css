@@ -385,6 +385,7 @@ html {
 
 
 .container {
+  padding: 5px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -400,7 +401,7 @@ html {
   min-width: 600px;
   border: 2px solid #fafafa10;
   border-radius: 10px;
-  color: #000;
+  color: rgb(255, 255, 255);
   padding: 20px;
 
 }
@@ -414,14 +415,13 @@ html {
 
 }
 
-.table_  th,tr {
-  padding: 50px;
+.table_ th, td {
+  padding: 20px;
 }
-
 
 .table_ thead {
   background-color: #161a42;
-  background-image: linear-gradient(160deg, #161a42 0%, #5462ca 100%);
+  background-image: linear-gradient(160deg, #161a42 0%, #000a57 100%);
   border-bottom: solid 5px rgba(255, 255, 255, .5);
 }
 
@@ -434,114 +434,6 @@ html {
 
   background: rgba(255, 255, 255, .3);
 }
-
-/*RESPONSIVE TABLAS*/
-
-@media (max-width: 1000px) {
-    /*Elimina borde del top*/
-    .tableSesion {
-        border: 0px;
-    }
-    /*Campos del head sin cambio*/
-    .tableSesion thead {
-        display: none;
-    }
-    .tableSesion tr {
-        /*Espacio entre las tablas/Rows*/
-        margin-bottom: 8px;
-        border-bottom: 3px solid #ddd;
-        display: block;
-    }
-    /*Just in case:)*/
-    .tableSesion th,
-    .table td {
-        font-size: 2rem;
-    }
-    .tableSesion td {
-        /*Block para que se posicione uno abajo de otro y no se desordene*/
-        display: block;
-        /*Líneas separados entre filas*/
-        border-bottom: 1px solid #ddd;
-        /*Posiciono el campo a la derecha. Paso de centro a derecha. DATA*/
-        text-align: right;
-    }
-    /*Pseudoelemento para añadir contenido con la propiedad content. 
-Basicamente añado los encabezados a la tabla en la parte izquierda*/
-    .tableSesion td::before {
-        /*Content: Data-label para llamar según lo establecido en el HTML*/
-        content: attr(data-label);
-        font-weight: bold;
-        text-transform: uppercase;
-        /*Propiedad para posicionar un elemento a la izquierda o derecha del contenedor*/
-        float: left;
-    }
-}
-header {
-    height: 15%;
-    width: 100%;
-    position: fixed;
-    padding: 25px;
-    background-color: #cfd8dc;
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-  }
-  
-  .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  
-  }
-  
-  .table_ {
-    background-color: #FAFAFA10;
-    backdrop-filter: blur(0.7rem);
-    text-align: center;
-    justify-content: center;
-    border-collapse: collapse;
-    min-width: 600px;
-    border: 2px solid #fafafa10;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    padding: 20px;
-    margin-top: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #first {
-    border-radius: 10px 0 0 0;
-  }
-  
-  #last {
-    border-radius: 0 10px 0 0;
-  
-  }
-  
-  .table_ th,
-  td {
-    padding: 20px;
-  }
-  
-  .table_ thead {
-    background-color: #000000;
-    background-image: linear-gradient(160deg, #276fbd 0%, #0f0053 100%);
-    border-bottom: solid 5px rgba(255, 255, 255, .5);
-  }
-  
-  
-  .table_ tr:nth-child(even) {
-    background: rgba(0, 0, 0, .1);
-  }
-  
-  .table_ tr:hover td {
-  
-    background: rgba(255, 255, 255, .3);
-  }
   
   
   .login-form {
