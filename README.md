@@ -13,3 +13,12 @@ Trabajo 3 - Marketmix
 # Dashboard-ensamblador:
 ![image](https://user-images.githubusercontent.com/102492675/215620958-7b0d919b-f8a0-4d8e-aa90-63cf1dfc5ad6.png)
 
+El camino feliz para la aplicación es:
+1. ingresar con usuario-admin: lady.rueda, y contraseña: admin123
+2. Ingresar los datos en salario base, cantidad de zapatos y zapatillas y comisión
+3. ingresar con el resto de roles y completar la información requerida
+      Secretario: juan.perez - admin123
+      Vendedor: maria.gomez - admin123
+      Ensamblador: mateo.bravo - admin1234
+4. ingresar nuevamente con el rol admin, verificar los datos de la tabla liquidación y generar el total global.
+   
