@@ -85,7 +85,24 @@ Vue.component("dashboard-admin", {
                           <td align="left">$ {{salarioEnsamblador}}</td>
                       </tr>
                   </tbody>
-
+                  <thead>
+                      <tr>
+                          <th>Total Administrador</th> 
+                          <th>Total Secretario</th>
+                          <th>Total Vendedor</th>
+                          <th>Total Ensamblador</th>
+                          <th>Total Global</th> <button type="submit" @click.prevent="calcularTotalGlobal">Calcular Total</button>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="color: #FFF;">
+                          <td align="left">$ {{salarioAdmin}}</td>
+                          <td align="left">$ {{salarioTotalSecretario}}</td>
+                          <td align="left">$ {{salarioTotalVendedor}}</td>
+                          <td align="left">$ {{salarioTotalEnsamblador}}</td>
+                          <td align="left">$ {{totalGlobal}}</td>
+                      </tr>
+                  </tbody>
               </table>
             </table>
           </div>
@@ -177,7 +194,8 @@ Vue.component("dashboard-admin", {
           <div class="cont-login">
               <div class="img-login"></div>
                   <form action="" method="post" id="filter" class="form">
-                      <input type="text" id="comision" name="comision" placeholder="Ingrese las horas extra" v-model="horasExtra"/>
+                      <input type="text" id="comision" name="comision" placeholder="Horas extra Secretario" v-model="horasExtra"/>
+                      <input type="text" id="comision" name="comision" placeholder="Horas extra Ensamblador" v-model="horasExtraEnsamblador"/>
                       <button type="submit" @click.prevent="calcularSalarioSecretario">GUARDAR</button>
                   </form>
           </div>
@@ -190,12 +208,14 @@ Vue.component("dashboard-admin", {
               <table class="table_">
                   <thead>
                       <tr>
-                          <th>Salario Total</th> 
+                          <th>Salario Total Propio</th>
+                          <th>Horas Extra Ensamblador</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr style="color: #FFF;">
                           <td align="left">$ {{salarioTotalSecretario}}</td>
+                          <td align="left">{{horasExtraEnsamblador}}</td>
                       </tr>
                   </tbody>
   
@@ -244,7 +264,52 @@ Vue.component("dashboard-admin", {
     </div>
       
       </div>
-      <div v-else="rol=='Ensamblador'" @click="quieroDarClick">Ensamblador {{usuario}}</div>
+      <div v-else="rol=='Ensamblador'" @click="">
+      <div class="test">
+      <h2 class="table-title" id="title-sesion">Salario:</h2>
+      <div class="login-page">
+          <div class="cont-login">
+              <div class="img-login"></div>
+                  <form action="" method="post" id="filter" class="form">
+                      <input type="number" id="quantity" name="quantity" min="0" placeholder="Zapatos Ensamblados" v-model="zapatosEnsamblados">
+                      <input type="number" id="comision" name="comision" placeholder="Zapatillas Ensambladas" v-model="zapatillasEnsambladas"/>
+                      <input type="number" id="quantity" name="quantity" min="0" placeholder="Número de hijos" v-model="numeroHijos">
+                      <button type="submit" @click.prevent="calcularSalarioEnsamblador">GUARDAR</button>
+                  </form>
+          </div>
+      </div>
+  
+  
+      <div class="container-table" id="idlogSes">
+          <table class="tableSesion">
+  
+              <table class="table_">
+                  <thead>
+                      <tr>
+                          <th>Máximo de Zapatos</th> 
+                          <th>Máximo de Zapatillas</th>
+                          <th>Zapatos Ensamblados</th> 
+                          <th>Zapatillas Ensambladas</th>
+                          <th>Número de Hijos</th> 
+                          <th>Salario Total</th> 
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="color: #FFF;">
+                          <td align="left">{{zapatosMax}}</td>
+                          <td align="left">{{zapatillasMax}}</td>
+                          <td align="left">{{zapatosEnsamblados}}</td>
+                          <td align="left">{{zapatillasEnsambladas}}</td>
+                          <td align="left">{{numeroHijos}}</td>
+                          <td align="left">$ {{salarioTotalEnsamblador}}</td>
+                      </tr>
+                  </tbody>
+  
+              </table>
+            </table>
+      </div>
+    </div>
+      </div>
   </div>
   `,
   data() {
@@ -258,12 +323,14 @@ Vue.component("dashboard-admin", {
       salarioSecretario: localStorage.getItem("salarioSecretario"),
       salarioVendedor: localStorage.getItem("salarioVendedor"),
       salarioEnsamblador: localStorage.getItem("salarioEnsamblador"),
+      totalGlobal:null,
+
       // cantidad de zapatos/zapatillas
       zapatoIngresado: "",
       cantidadIngresada: null,
       precioIngresado: null,
 
-      zapatosMax: localStorage.getItem("maxZapatos"),
+      zapatosMax: Number(localStorage.getItem("maxZapatos")),
       precioZapatos: localStorage.getItem("precioZapatos"),
 
       zapatillasMax: localStorage.getItem("maxZapatillas"),
@@ -274,21 +341,33 @@ Vue.component("dashboard-admin", {
       comisionFinal: localStorage.getItem("comision"),
 
       // Secretario
+      horasExtraEnsamblador: localStorage.getItem("horasExtraEnsamblador"),
       horasExtra: null,
       salarioTotalSecretario: localStorage.getItem("salarioTotalSecretario"),
 
       // Vendedor
       numeroVentas: null,
-      precioZapatos: 200000,
-      precioZapatillas: 400000,
+      precioFinalZapatos: 200000,
+      precioFinalZapatillas: 400000,
       salarioTotalVendedor: localStorage.getItem("salarioTotalVendedor"),
       totalZapatosVendidos: null,
       totalZapatillasVendidas: null,
       totalVentasRealizadas: null,
       subsidioTransporte: 140000,
+
+      // Ensamblador
+      zapatillasEnsambladas: null,
+      zapatosEnsamblados: null,
+      numeroHijos: null,
+      bonoHijo: 80000,
+      bonoHijos: 60000,
+      salarioTotalEnsamblador: localStorage.getItem("salarioTotalEnsamblador"),
     };
   },
   methods: {
+    calcularTotalGlobal(){
+      return this.totalGlobal = Number(this.salarioAdmin) + Number(this.salarioTotalEnsamblador) + Number(this.salarioTotalSecretario) + Number(this.salarioTotalVendedor)
+    },
     asignarSalario() {
       switch (this.cargoIngresado) {
         case "admin":
@@ -335,16 +414,17 @@ Vue.component("dashboard-admin", {
     },
     calcularSalarioSecretario() {
       this.salarioTotalSecretario=Number(this.salarioSecretario)+((Number(this.salarioSecretario) / 240) * 1.8 * Number(this.horasExtra));
-      localStorage.setItem("salarioTotalSecretario", this.salarioTotalSecretario)
+      localStorage.setItem("salarioTotalSecretario", this.salarioTotalSecretario);
+      localStorage.setItem("horasExtraEnsamblador", this.horasExtraEnsamblador);
     },
 
     calcularSalarioVendedor() {
       switch (this.zapatoIngresado) {
         case "zapatos":
-          this.totalZapatosVendidos = Number(this.numeroVentas) * Number(this.precioZapatos)
+          this.totalZapatosVendidos = Number(this.numeroVentas) * Number(this.precioFinalZapatos)
           break;
         case "zapatillas":
-          this.totalZapatillasVendidas = Number(this.numeroVentas) * Number(this.precioZapatillas)
+          this.totalZapatillasVendidas = Number(this.numeroVentas) * Number(this.precioFinalZapatillas)
           break;
       }
       this.totalVentasRealizadas = Number(this.totalZapatosVendidos) + Number(this.totalZapatillasVendidas)
@@ -356,6 +436,36 @@ Vue.component("dashboard-admin", {
         this.salarioTotalVendedor = Number(this.salarioVendedor) + this.subsidioTransporte
       }
       localStorage.setItem("salarioTotalVendedor", this.salarioTotalVendedor)
+    },
+    calcularSalarioEnsamblador(){
+      let zapatos = 0;
+      let zapatillas = 0;
+      let hijo = 0;
+          if(this.zapatosEnsamblados > 1000 && this.zapatosEnsamblados < 2000){
+            zapatos = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.1)
+          }else if(this.zapatosEnsamblados > 2000){
+            zapatos = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.2)
+          } else{
+            zapatos;
+          }
+
+          if(this.zapatillasEnsambladas > 1700 && this.zapatosEnsamblados < 3000){
+            zapatillas = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.15)
+          }else if(this.zapatosEnsamblados > 3000){
+            zapatillas = Number(this.precioZapatos) + (this.precioFinalZapatos * 0.3)
+          } else{
+            zapatillas;
+          }
+
+          if(this.numeroHijos === 1){
+            hijo = this.bonoHijo;
+          } else{
+            hijo = this.bonoHijos * this.numeroHijos;
+          }
+
+      this.salarioTotalEnsamblador = Number(this.salarioEnsamblador) + (Number(this.salarioEnsamblador) / 240) * 2.2 * Number(this.horasExtraEnsamblador) + zapatos + zapatillas + hijo
+
+      localStorage.setItem("salarioTotalEnsamblador", this.salarioTotalEnsamblador)
     },
 
     logout() {
