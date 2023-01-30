@@ -40,7 +40,7 @@ function mostrarData() {
 /*============ALERTA CERRAR SESIÓN=========*/
 function cerrarSesion() {
     alert("Has cerrado sesión");
-    location.href = './index.php'
+    location.href = './'
 }
 
 /*============ALERTA VALIDAR LOGIN=========*/
@@ -62,5 +62,5 @@ function validarLogin() {
     }
     // formulario.submit();
     alert("Has iniciado sesión");
-    location.href = './logs.html'
+    location.href = ''
 }

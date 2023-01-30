@@ -24,7 +24,23 @@
     box-sizing: border-box;
 }
 
-
+button {
+  appearance: auto;
+  writing-mode: horizontal-tb !important;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #3796e4;
+  width: 100%;
+  border-radius: 5px;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  display: flex;
+}
 /*=============== BODY STYLE===============*/
 
 body {
@@ -369,22 +385,22 @@ html {
 
 
 .container-table {
-    width: 100%;
-    /*Limitante ancho*/
-    max-width: 1000px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    border-radius: 10px solid #Fff;
-    /*Para que no se ponga pegado del sidebar*/
-    padding-left: 350px;
-    /*Separa la tabla del header*/
-    /* margin-top: 40px; */
-    /*Separa la tabla del header*/
-    margin-bottom: 40px;
-    /* display: none; */
+  width: 100%;
+  /*Limitante ancho*/
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-radius: 10px solid #Fff;
+  /*Para que no se ponga pegado del sidebar*/
+  padding-left: 350px;
+  /*Separa la tabla del header*/
+  /* margin-top: 40px; */
+  /*Separa la tabla del header*/
+  margin-bottom: 40px;
+  /* display: none; */
 }
 
 
@@ -408,7 +424,7 @@ html {
 .tableSesion {
     
     width: 100%;
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
     /*Para que los campos se junten o no*/
     border-collapse: collapse;
     /*Ayuda para que los datos se carguen más rápido y además para que las columns tengan el mismo tamaño*/
@@ -543,7 +559,7 @@ header {
   }
   
   .table_ thead {
-    background-color: #1818b6;
+    background-color: #000000;
     background-image: linear-gradient(160deg, #276fbd 0%, #0f0053 100%);
     border-bottom: solid 5px rgba(255, 255, 255, .5);
   }

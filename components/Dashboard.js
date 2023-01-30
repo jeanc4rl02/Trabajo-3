@@ -32,9 +32,13 @@ Vue.component("dashboard-admin", {
             </a>
             <span class="tooltip ">Log Database</span>
         </li>
-        <form action="/index.html">
-        <button type="submit" @click="logout">SALIR</button>
-        </form>
+        <li>
+                <a href="index.html" class="menufoc active" @click="logout"">
+                    <i class='bx bx-exit'></i>
+                    <span class=" links__name ">Salir</span>
+                </a>
+                <span class="tooltip">Cerrar sesión</span>
+            </li>
         
     </ul>
     </div>
