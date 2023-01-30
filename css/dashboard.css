@@ -580,7 +580,7 @@ header {
     z-index: 200;
   }
   
-  input {
+  input, select {
     margin-top: auto;
     top: 0;
     left: 0;
@@ -591,9 +591,13 @@ header {
     outline: 0;
     border: 0;
     font-size: 1em;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 0 20px;
     align-items: center;
+  }
+
+  select {
+    height: 44px;
   }
   
   .fa {
@@ -618,7 +622,7 @@ header {
   }
   
   form:hover input,
-  form:valid input {
+  form:valid input, form:hover select, form:valid select {
     display: block;
   }
   
@@ -703,16 +707,15 @@ header {
 
   .profile{
     display: inline-block;
-    float: right;
     width: 160px;
 }
-.profile p{
+.profile h3{
     color: white;
     font-weight: 500;
     margin-top: 10px;
     font-size: 13.5px;
 }
-.profile p span{
+.profile h3 span{
     font-weight: 400;
     font-size: 12px;
     display: block;
@@ -738,7 +741,7 @@ header {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
   
-  .form input {
+  .form input, .form select {
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: #f2f2f2;

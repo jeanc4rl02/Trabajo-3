@@ -57,7 +57,7 @@ body {
   border-radius: 5px;
 }
 
-.form input {
+.form input, .form select {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
