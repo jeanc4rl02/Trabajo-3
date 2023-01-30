@@ -8,6 +8,10 @@ body {
   background: #276fbd;
   margin: 0;
   box-sizing: border-box;
+  background-image: url(../img/sneakerLogIn);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(4px);
 }
 
 /* Styles Login */
