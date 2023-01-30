@@ -72,9 +72,9 @@ Vue.component("dashboard-admin", {
                 <tbody>
                 <tr>
                 <td>$ {{salarioAdmin}}</td>
-                <td>$ {{salarioSecretario}}</td>
-                <td>$ {{salarioVendedor}}</td>
-                <td>$ {{salarioEnsamblador}}</td>
+                <td align="left">$ {{salarioSecretario}}</td>
+                <td align="left">$ {{salarioVendedor}}</td>
+                <td align="left">$ {{salarioEnsamblador}}</td>
                 </tr>
 
               </table>
@@ -152,6 +152,32 @@ Vue.component("dashboard-admin", {
                   <tbody>
                       <tr style="color: #FFF;">
                           <td align="left">$ {{comisionFinal}}</td>
+                      </tr>
+                  </tbody>
+  
+              </table>
+            </table>
+      </div>
+      <div class="container" id="idlogSes">
+          <table class="tableSesion">
+  
+              <table class="table_">
+                  <thead>
+                      <tr>
+                      <th>Total Administrador</th> 
+                      <th>Total Secretario</th>
+                      <th>Total Vendedor</th>
+                      <th>Total Ensamblador</th>
+                      <th>Total Global</th> <button type="submit" @click.prevent="calcularTotalGlobal">Calcular Total</button>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr style="color: #FFF;">
+                      <td align="left">$ {{salarioAdmin}}</td>
+                      <td align="left">$ {{salarioTotalSecretario}}</td>
+                      <td align="left">$ {{salarioTotalVendedor}}</td>
+                      <td align="left">$ {{salarioTotalEnsamblador}}</td>
+                      <td align="left">$ {{totalGlobal}}</td>
                       </tr>
                   </tbody>
   
