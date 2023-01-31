@@ -98,7 +98,7 @@ Vue.component("log-in", {
         localStorage.setItem("rol", persona[0].rol);
         console.log(localStorage.getItem("rol"));
         this.error = false;
-        window.location = "/dashboard.html";
+        window.location = "../dashboard.html";
       } else {
         this.error = true;
       }
